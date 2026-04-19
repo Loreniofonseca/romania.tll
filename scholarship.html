@@ -13,58 +13,24 @@
             --accent: #C8102E;
         }
 
-        * {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
         /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #C8102E;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            display: none;
+        .cursor, .cursor-dot {
+            position: fixed; width: 24px; height: 24px;
+            border: 2px solid #C8102E; border-radius: 50%;
+            pointer-events: none; z-index: 9999; display: none;
         }
+        .cursor-dot { width: 8px; height: 8px; background: #C8102E; }
+        body:hover .cursor, body:hover .cursor-dot { display: block; }
 
-        .cursor-dot {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: #C8102E;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        body:hover .cursor,
-        body:hover .cursor-dot {
-            display: block;
-        }
-
-        .nav-link {
-            position: relative;
-        }
+        .nav-link { position: relative; }
         .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: #C8102E;
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 0; background: #C8102E;
             transition: width 0.3s ease;
         }
-        .nav-link:hover:after,
-        .nav-link.active:after {
-            width: 100%;
-        }
+        .nav-link:hover:after, .nav-link.active:after { width: 100%; }
 
         .info-card {
             transition: all 0.4s ease;
@@ -81,36 +47,42 @@
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
 
-    <!-- Top Header -->
-    <div class="bg-white border-b py-3 text-sm">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-2 hover:text-red-600">
-                    <i class="fas fa-envelope"></i> tl.romania0@gmail.com
+    <!-- ================= TOP HEADER ================= -->
+    <div class="bg-white border-b py-2.5 text-sm">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 text-xs sm:text-sm">
+                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-1.5 hover:text-red-600">
+                    <i class="fas fa-envelope"></i>
+                    <span class="hidden sm:inline">tl.romania0@gmail.com</span>
                 </a>
-                <a href="tel:+40744369176" class="flex items-center gap-2 hover:text-red-600">
-                    <i class="fas fa-phone"></i> +40 744 369 176
+                <a href="tel:+40744369176" class="flex items-center gap-1.5 hover:text-red-600">
+                    <i class="fas fa-phone"></i>
+                    <span class="hidden sm:inline">+40 744 369 176</span>
                 </a>
             </div>
-            <div class="flex gap-6">
+            <div class="flex gap-5 text-sm">
                 <a href="contact.html" class="hover:text-red-600">Contact</a>
                 <a href="about.html" class="hover:text-red-600">About</a>
             </div>
         </div>
     </div>
 
-    <!-- Navbar -->
+    <!-- ================= NAVBAR (Mobile Optimized) ================= -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="w-12 h-12 rounded-xl object-cover">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" 
+                     class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl object-cover">
                 <div>
-                    <h1 class="text-xl font-bold text-gray-900">AETLR</h1>
-                    <p class="text-xs text-gray-500">Association of Timorese Students in Romania</p>
+                    <h1 class="text-lg sm:text-xl font-bold text-gray-900">AETLR</h1>
+                    <p class="text-[10px] text-gray-500 -mt-1 hidden sm:block">Association of Timorese Students</p>
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium">
                 <a href="index.html" class="nav-link text-gray-700 hover:text-red-600">HOME</a>
                 <a href="about.html" class="nav-link text-gray-700 hover:text-red-600">ABOUT US</a>
                 
@@ -126,37 +98,52 @@
                 <a href="contact.html" class="nav-link text-gray-700 hover:text-red-600">CONTACT</a>
             </div>
 
+            <!-- Hamburger Button -->
+            <button id="hamburger" class="md:hidden text-3xl text-gray-700">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Official Website Button -->
             <a href="https://scholarships.studyinromania.gov.ro/" target="_blank" 
-               class="bg-red-600 text-white px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:scale-105">
-                <i class="fas fa-external-link-alt"></i> Official Website
+               class="hidden md:flex bg-red-600 text-white px-5 py-2.5 rounded-2xl font-semibold items-center gap-2 hover:scale-105">
+                <i class="fas fa-external-link-alt"></i> Official Site
             </a>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t py-5 px-4">
+            <div class="flex flex-col gap-4 text-base font-medium">
+                <a href="index.html" class="py-3 hover:text-red-600">Home</a>
+                <a href="about.html" class="py-3 hover:text-red-600">About Us</a>
+                <a href="programs.html" class="py-3 text-red-600">Programs</a>
+                <a href="scholarship.html" class="py-3 hover:text-red-600">Scholarship</a>
+                <a href="contact.html" class="py-3 hover:text-red-600">Contact</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-[#0A2540] to-[#1E3A5F] text-white py-24">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">Romanian Government Scholarship</h1>
-            <p class="text-xl max-w-2xl mx-auto opacity-90">
+    <section class="bg-gradient-to-br from-[#0A2540] to-[#1E3A5F] text-white py-20 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Romanian Government Scholarship</h1>
+            <p class="text-lg sm:text-xl max-w-2xl mx-auto opacity-90">
                 Fully funded scholarship opportunities for Timorese students in Romania
             </p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid md:grid-cols-12 gap-12">
+    <div class="max-w-7xl mx-auto px-4 py-16 md:py-20">
+        <div class="grid md:grid-cols-12 gap-10">
 
             <!-- Left Content -->
             <div class="md:col-span-8 space-y-12">
 
-                <!-- Romanian Government Scholarship -->
-                <div class="info-card bg-white rounded-3xl p-10 shadow-sm border">
+                <div class="info-card bg-white rounded-3xl p-6 md:p-10 shadow-sm border">
                     <h2 class="text-3xl font-bold mb-6 flex items-center gap-4">
-                        <span class="text-4xl">🎓</span> 
-                        Romanian Government Scholarship
+                        <span class="text-4xl">🎓</span> Romanian Government Scholarship
                     </h2>
-                    <p class="text-gray-600 text-lg mb-8">
+                    <p class="text-gray-600 text-[17px] mb-8">
                         The Romanian Government offers fully-funded scholarships for international students from non-EU countries through the official Study in Romania platform.
                     </p>
                     
@@ -164,7 +151,7 @@
                     <ul class="grid md:grid-cols-2 gap-4 text-gray-700">
                         <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Full tuition fee coverage</li>
                         <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Monthly scholarship allowance</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Free accommodation in university dormitories</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Free accommodation in dormitories</li>
                         <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Medical insurance</li>
                         <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Romanian language preparatory year</li>
                     </ul>
@@ -175,11 +162,9 @@
                     </a>
                 </div>
 
-                <!-- Europass CV -->
-                <div class="info-card bg-white rounded-3xl p-10 shadow-sm border">
+                <div class="info-card bg-white rounded-3xl p-6 md:p-10 shadow-sm border">
                     <h2 class="text-3xl font-bold mb-6 flex items-center gap-4">
-                        <span class="text-4xl">📝</span> 
-                        Europass CV
+                        <span class="text-4xl">📝</span> Europass CV
                     </h2>
                     <p class="text-gray-600 mb-8">
                         Europass is the standard CV format used across Europe and is highly recommended for scholarship applications in Romania.
@@ -214,31 +199,16 @@
 
             <!-- Sidebar -->
             <div class="md:col-span-4">
-                <div class="info-card bg-white rounded-3xl p-8 shadow-sm sticky top-8">
+                <div class="info-card bg-white rounded-3xl p-6 md:p-8 shadow-sm sticky top-6">
                     <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
                         <i class="fas fa-lightbulb text-amber-500"></i> Application Tips
                     </h3>
                     <ul class="space-y-5 text-gray-700">
-                        <li class="flex gap-3">
-                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                            <span>Prepare all documents well in advance</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                            <span>Use formal and academic English</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                            <span>Double-check all deadlines</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                            <span>Submit complete and well-organized documents</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                            <span>Ask for recommendation letters from professors or teachers</span>
-                        </li>
+                        <li class="flex gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i><span>Prepare all documents well in advance</span></li>
+                        <li class="flex gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i><span>Use formal and academic English</span></li>
+                        <li class="flex gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i><span>Double-check all deadlines</span></li>
+                        <li class="flex gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i><span>Submit complete and well-organized documents</span></li>
+                        <li class="flex gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i><span>Ask for recommendation letters from professors</span></li>
                     </ul>
 
                     <div class="mt-10 pt-8 border-t">
@@ -253,24 +223,32 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-[#0A2540] text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h3 class="text-3xl font-bold mb-2">AETLR</h3>
-            <p class="text-gray-400 mb-8">Association of Timorese Students in Romania</p>
-            
-            <div class="flex flex-wrap justify-center gap-8 text-sm mb-10">
+    <footer class="bg-[#0A2540] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-2">AETLR</h3>
+            <p class="text-gray-400 mb-6">Association of Timorese Students in Romania</p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm mb-8">
                 <a href="about.html" class="hover:text-red-400">About</a>
                 <a href="programs.html" class="hover:text-red-400">Programs</a>
                 <a href="scholarship.html" class="hover:text-red-400">Scholarship</a>
                 <a href="contact.html" class="hover:text-red-400">Contact</a>
             </div>
-
             <p class="text-sm text-gray-400">© 2026 AETLR. All rights reserved.</p>
-            <p class="text-sm text-gray-500 mt-2">🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
         </div>
     </footer>
 
     <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            hamburger.innerHTML = mobileMenu.classList.contains('hidden') 
+                ? '<i class="fas fa-bars"></i>' 
+                : '<i class="fas fa-times"></i>';
+        });
+
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
         const cursorDot = document.querySelector('.cursor-dot');
@@ -281,9 +259,6 @@
             cursorDot.style.left = e.clientX + 'px';
             cursorDot.style.top = e.clientY + 'px';
         });
-
-        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.6)');
-        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     </script>
 </body>
 </html>
