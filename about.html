@@ -13,79 +13,34 @@
             --accent: #C8102E;
         }
 
-        * {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
         /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #C8102E;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
+        .cursor, .cursor-dot {
+            position: fixed; width: 24px; height: 24px;
+            border: 2px solid #C8102E; border-radius: 50%;
+            pointer-events: none; z-index: 9999;
             display: none;
         }
+        .cursor-dot { width: 8px; height: 8px; background: #C8102E; }
+        body:hover .cursor, body:hover .cursor-dot { display: block; }
 
-        .cursor-dot {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: #C8102E;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        body:hover .cursor,
-        body:hover .cursor-dot {
-            display: block;
-        }
-
-        .nav-link {
-            position: relative;
-        }
+        .nav-link { position: relative; }
         .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: #C8102E;
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 0; background: #C8102E;
             transition: width 0.3s ease;
         }
-        .nav-link:hover:after,
-        .nav-link.active:after {
-            width: 100%;
-        }
+        .nav-link:hover:after, .nav-link.active:after { width: 100%; }
 
-        .leader-card {
-            transition: all 0.4s ease;
-        }
-        .leader-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.15);
-        }
-
-        /* LEADERSHIP TEAM - BIGGER SIZE */
         .leader-img {
-            width: 200px;
-            height: 200px;
+            width: 160px; height: 160px;
             object-fit: cover;
-            border: 6px solid #fff;
-            box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.15);
+            border: 5px solid #fff;
+            box-shadow: 0 10px 20px -5px rgb(0 0 0 / 0.15);
         }
-
-        .leader-name {
-            font-size: 1.35rem;
-            font-weight: 700;
+        @media (min-width: 768px) {
+            .leader-img { width: 210px; height: 210px; }
         }
     </style>
 </head>
@@ -95,198 +50,148 @@
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
 
-    <!-- Top Header -->
-    <div class="bg-white border-b py-3 text-sm">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-2 hover:text-red-600">
-                    <i class="fas fa-envelope"></i> tl.romania0@gmail.com
+    <!-- ================= TOP HEADER (Mobile Optimized) ================= -->
+    <div class="bg-white border-b py-2.5 text-sm">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 text-xs sm:text-sm">
+                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-1.5 hover:text-red-600">
+                    <i class="fas fa-envelope"></i>
+                    <span class="hidden sm:inline">tl.romania0@gmail.com</span>
                 </a>
-                <a href="tel:+40744369176" class="flex items-center gap-2 hover:text-red-600">
-                    <i class="fas fa-phone"></i> +40 744 369 176
+                <a href="tel:+40744369176" class="flex items-center gap-1.5 hover:text-red-600">
+                    <i class="fas fa-phone"></i>
+                    <span class="hidden sm:inline">+40 744 369 176</span>
                 </a>
             </div>
-            <div class="flex gap-6">
-                <a href="contact.html" class="hover:text-red-600">Contact</a>
-                <a href="about.html" class="text-red-600 font-medium">About</a>
-            </div>
+            <a href="contact.html" class="text-red-600 font-medium text-sm">Contact</a>
         </div>
     </div>
 
-    <!-- Navbar -->
+    <!-- ================= NAVBAR (Mobile Hamburger) ================= -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="w-12 h-12 rounded-xl object-cover">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" 
+                     class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl object-cover">
                 <div>
-                    <h1 class="text-xl font-bold text-gray-900">AETLR</h1>
-                    <p class="text-xs text-gray-500">Association of Timorese Students in Romania</p>
+                    <h1 class="text-lg sm:text-xl font-bold text-gray-900">AETLR</h1>
+                    <p class="text-[10px] text-gray-500 -mt-1 hidden sm:block">Timorese Students in Romania</p>
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium">
                 <a href="index.html" class="nav-link text-gray-700 hover:text-red-600">HOME</a>
                 <a href="about.html" class="nav-link text-red-600 active">ABOUT US</a>
-                
-                <div class="relative group">
-                    <a href="programs.html" class="nav-link text-gray-700 hover:text-red-600 flex items-center gap-1">
-                        PROGRAMS <i class="fas fa-chevron-down text-xs"></i>
-                    </a>
-                    <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-2xl py-3 px-6 w-52 mt-3 z-50">
-                        <a href="scholarship.html" class="block py-2 hover:text-red-600">Scholarship</a>
-                    </div>
-                </div>
-
+                <a href="programs.html" class="nav-link text-gray-700 hover:text-red-600">PROGRAMS</a>
+                <a href="scholarship.html" class="nav-link text-gray-700 hover:text-red-600">SCHOLARSHIP</a>
                 <a href="contact.html" class="nav-link text-gray-700 hover:text-red-600">CONTACT</a>
             </div>
 
-            <a href="scholarship.html" class="bg-red-600 text-white px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:scale-105">
+            <!-- Mobile Hamburger -->
+            <button id="hamburger" class="md:hidden text-2xl text-gray-700">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Scholarship Button -->
+            <a href="scholarship.html" 
+               class="hidden md:flex bg-red-600 text-white text-sm px-5 py-2.5 rounded-2xl font-semibold items-center gap-2 hover:scale-105">
                 <i class="fas fa-graduation-cap"></i> Scholarships
             </a>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t py-4 px-4">
+            <div class="flex flex-col gap-4 text-base font-medium">
+                <a href="index.html" class="py-2 hover:text-red-600">Home</a>
+                <a href="about.html" class="py-2 text-red-600">About Us</a>
+                <a href="programs.html" class="py-2 hover:text-red-600">Programs</a>
+                <a href="scholarship.html" class="py-2 hover:text-red-600">Scholarship</a>
+                <a href="contact.html" class="py-2 hover:text-red-600">Contact</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-[#0A2540] to-[#1E3A5F] text-white py-24">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">About Us</h1>
-            <p class="text-xl max-w-2xl mx-auto opacity-90">
+    <section class="bg-gradient-to-br from-[#0A2540] to-[#1E3A5F] text-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+            <p class="text-lg md:text-xl max-w-xl mx-auto opacity-90">
                 Connecting Timorese students in Romania through education, culture, and community
             </p>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid md:grid-cols-12 gap-12">
+    <!-- ================= LEADERSHIP TEAM (Mobile Optimized) ================= -->
+    <div class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+        <div class="grid md:grid-cols-12 gap-10">
 
-            <!-- Left Content -->
             <div class="md:col-span-8 space-y-16">
-
-                <!-- About Section -->
                 <section>
-                    <h2 class="text-4xl font-bold mb-6">Who We Are</h2>
-                    <p class="text-lg leading-relaxed text-gray-600">
+                    <h2 class="text-3xl font-bold mb-5">Who We Are</h2>
+                    <p class="text-[17px] leading-relaxed text-gray-600">
                         The Association of Timorese Students in Romania (AETLR) is a student-led organization 
-                        dedicated to supporting Timorese students pursuing higher education in Romania. 
-                        We foster academic excellence, cultural preservation, and a strong community spirit.
+                        dedicated to supporting Timorese students pursuing higher education in Romania.
                     </p>
-
-                    <div class="grid md:grid-cols-3 gap-6 mt-12">
-                        <div class="card bg-white p-8 rounded-3xl shadow-sm border">
-                            <h3 class="text-2xl font-semibold mb-4 text-red-600">🎯 Our Mission</h3>
-                            <p class="text-gray-600">To create a supportive environment where Timorese students can excel academically while maintaining their cultural identity.</p>
-                        </div>
-                        <div class="card bg-white p-8 rounded-3xl shadow-sm border">
-                            <h3 class="text-2xl font-semibold mb-4 text-red-600">👁️ Our Vision</h3>
-                            <p class="text-gray-600">To be the leading platform for Timorese students in Romania, promoting excellence in education and cultural preservation.</p>
-                        </div>
-                        <div class="card bg-white p-8 rounded-3xl shadow-sm border">
-                            <h3 class="text-2xl font-semibold mb-4 text-red-600">💡 Our Values</h3>
-                            <ul class="space-y-3 text-gray-600">
-                                <li>✓ Unity and Community Support</li>
-                                <li>✓ Academic Excellence</li>
-                                <li>✓ Cultural Preservation</li>
-                                <li>✓ Leadership Development</li>
-                                <li>✓ International Cooperation</li>
-                            </ul>
-                        </div>
-                    </div>
                 </section>
 
-                <!-- Leadership Team - BIGGER -->
                 <section>
-                    <h2 class="text-4xl font-bold mb-12">Leadership Team</h2>
-                    
-                    <div class="grid md:grid-cols-2 gap-10">
+                    <h2 class="text-3xl font-bold mb-8">Leadership Team</h2>
+                    <div class="space-y-10">
 
-                        <!-- President -->
-                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
-                            <div class="pt-10">
-                                <img src="./ori.jpeg" 
-                                     alt="Lorenio Lirio Fonseca" 
-                                     class="leader-img mx-auto rounded-full">
-                            </div>
-                            <div class="p-8">
-                                <h3 class="leader-name">Lorenio Lirio Fonseca</h3>
-                                <p class="text-red-600 font-semibold text-lg">President</p>
-                                <p class="text-sm text-gray-500 mt-1">Aurel Vlaicu University of Arad</p>
-                                <p class="mt-5 text-gray-600">
-                                    Leads the association and officially represents all members.
-                                </p>
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden p-6 flex flex-col items-center text-center md:flex-row md:text-left gap-6">
+                            <img src="./ori.jpeg" alt="Lorenio" class="leader-img rounded-2xl">
+                            <div>
+                                <h3 class="text-xl font-bold">Lorenio Lirio Fonseca</h3>
+                                <p class="text-red-600 font-semibold">President</p>
+                                <p class="text-sm text-gray-500">Aurel Vlaicu University of Arad</p>
+                                <p class="mt-4 text-gray-600">Leads the association and officially represents all members.</p>
                             </div>
                         </div>
 
-                        <!-- Vice President -->
-                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
-                            <div class="pt-10">
-                                <img src="./Luna.jpeg" 
-                                     alt="Pricilia Deoneia L.C Amaral" 
-                                     class="leader-img mx-auto rounded-full">
-                            </div>
-                            <div class="p-8">
-                                <h3 class="leader-name">Pricilia Deoneia L.C Amaral</h3>
-                                <p class="text-red-600 font-semibold text-lg">Vice President</p>
-                                <p class="text-sm text-gray-500 mt-1">University of Craiova</p>
-                                <p class="mt-5 text-gray-600">
-                                    Supports daily operations and assists the President.
-                                </p>
+                        <!-- Repeat similar structure for other members -->
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden p-6 flex flex-col items-center text-center md:flex-row md:text-left gap-6">
+                            <img src="./Luna.jpeg" alt="Pricilia" class="leader-img rounded-2xl">
+                            <div>
+                                <h3 class="text-xl font-bold">Pricilia Deoneia L.C Amaral</h3>
+                                <p class="text-red-600 font-semibold">Vice President</p>
+                                <p class="text-sm text-gray-500">University of Craiova</p>
+                                <p class="mt-4 text-gray-600">Supports daily operations and assists the President.</p>
                             </div>
                         </div>
 
-                        <!-- Secretary -->
-                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
-                            <div class="pt-10">
-                                <img src="./Irene.jpeg" 
-                                     alt="Regina Iren Bui" 
-                                     class="leader-img mx-auto rounded-full">
-                            </div>
-                            <div class="p-8">
-                                <h3 class="leader-name">Regina Iren Bui</h3>
-                                <p class="text-red-600 font-semibold text-lg">Secretary</p>
-                                <p class="text-sm text-gray-500 mt-1">Alexandru Ioan Cuza University of Iași</p>
-                                <p class="mt-5 text-gray-600">
-                                    Handles communication and official documentation.
-                                </p>
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden p-6 flex flex-col items-center text-center md:flex-row md:text-left gap-6">
+                            <img src="./Irene.jpeg" alt="Regina" class="leader-img rounded-2xl">
+                            <div>
+                                <h3 class="text-xl font-bold">Regina Iren Bui</h3>
+                                <p class="text-red-600 font-semibold">Secretary</p>
+                                <p class="text-sm text-gray-500">Alexandru Ioan Cuza University of Iași</p>
+                                <p class="mt-4 text-gray-600">Handles communication and official documentation.</p>
                             </div>
                         </div>
 
-                        <!-- Treasurer -->
-                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
-                            <div class="pt-10">
-                                <img src="./Nericia.jpeg" 
-                                     alt="Nericia Lelita da Costa" 
-                                     class="leader-img mx-auto rounded-full">
-                            </div>
-                            <div class="p-8">
-                                <h3 class="leader-name">Nericia Lelita da Costa</h3>
-                                <p class="text-red-600 font-semibold text-lg">Treasurer</p>
-                                <p class="text-sm text-gray-500 mt-1">Aurel Vlaicu University of Arad</p>
-                                <p class="mt-5 text-gray-600">
-                                    Manages finances and budget allocation.
-                                </p>
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden p-6 flex flex-col items-center text-center md:flex-row md:text-left gap-6">
+                            <img src="./Nericia.jpeg" alt="Nericia" class="leader-img rounded-2xl">
+                            <div>
+                                <h3 class="text-xl font-bold">Nericia Lelita da Costa</h3>
+                                <p class="text-red-600 font-semibold">Treasurer</p>
+                                <p class="text-sm text-gray-500">Aurel Vlaicu University of Arad</p>
+                                <p class="mt-4 text-gray-600">Manages finances and budget allocation.</p>
                             </div>
                         </div>
-
                     </div>
                 </section>
             </div>
 
             <!-- Sidebar -->
-            <div class="md:col-span-4 space-y-8">
-                <div class="bg-white rounded-3xl p-8 shadow-sm">
-                    <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
-                        <i class="fas fa-bullhorn text-red-600"></i> Latest News
-                    </h3>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-xs text-gray-500">February 16, 2026</p>
-                            <p class="font-medium">RGS Scholarship Open</p>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500">February 20, 2026</p>
-                            <p class="font-medium">Scholarship Information Session</p>
-                        </div>
+            <div class="md:col-span-4">
+                <div class="bg-white rounded-3xl p-6 shadow-sm sticky top-6">
+                    <h3 class="text-2xl font-semibold mb-6">Latest News</h3>
+                    <div class="space-y-5 text-sm">
+                        <div><p class="text-gray-500">Feb 16, 2026</p><p class="font-medium">RGS Scholarship Open</p></div>
+                        <div><p class="text-gray-500">Feb 20, 2026</p><p class="font-medium">Information Session</p></div>
                     </div>
                 </div>
             </div>
@@ -294,24 +199,26 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-[#0A2540] text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h3 class="text-3xl font-bold mb-2">AETLR</h3>
-            <p class="text-gray-400 mb-8">Association of Timorese Students in Romania</p>
-            
-            <div class="flex flex-wrap justify-center gap-8 text-sm mb-10">
-                <a href="about.html" class="hover:text-red-400">About</a>
-                <a href="programs.html" class="hover:text-red-400">Programs</a>
-                <a href="scholarship.html" class="hover:text-red-400">Scholarship</a>
-                <a href="contact.html" class="hover:text-red-400">Contact</a>
-            </div>
-
-            <p class="text-sm text-gray-400">© 2026 AETLR. All rights reserved.</p>
-            <p class="text-sm text-gray-500 mt-2">🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
+    <footer class="bg-[#0A2540] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold">AETLR</h3>
+            <p class="text-gray-400 mt-2">Association of Timorese Students in Romania</p>
+            <p class="text-sm text-gray-400 mt-8">© 2026 AETLR. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            hamburger.innerHTML = mobileMenu.classList.contains('hidden') 
+                ? '<i class="fas fa-bars"></i>' 
+                : '<i class="fas fa-times"></i>';
+        });
+
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
         const cursorDot = document.querySelector('.cursor-dot');
@@ -322,9 +229,6 @@
             cursorDot.style.left = e.clientX + 'px';
             cursorDot.style.top = e.clientY + 'px';
         });
-
-        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.6)');
-        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     </script>
 </body>
 </html>
